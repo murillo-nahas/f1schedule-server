@@ -1,12 +1,16 @@
-import Koa from "koa";
-import { router } from "./router";
+import Fastify from "fastify";
 
-const app = new Koa();
-
-const port = 3000;
-
-app.use(router.routes());
-
-app.listen(port, () => {
-  console.log(`🚀 Server is running on port http://localhost:${port}/`);
+const fastify = Fastify({
+  logger: true,
 });
+
+fastify.get("/", (request, reply) => {
+  return { hello: "world" };
+});
+
+try {
+  fastify.listen({ port: 3000 });
+} catch (err) {
+  fastify.log.error(err);
+  process.exit(1);
+}
