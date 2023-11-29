@@ -1,4 +1,4 @@
-## HTTP NodeTS/Koa Server 
+## HTTP NodeTS/Fastify Server 
 
 Get all the Formula 1 2024 schedule from here.
 
@@ -17,8 +17,7 @@ Get all the Formula 1 2024 schedule from here.
 
 - [x] Node.js;
 - [x] TypeScript;
-- [x] Koa;
-- [x] MongoDB/Mongoose;
+- [x] Fastify;
 - [x] Linter (EsLint);
 - [x] Prettier;
 
