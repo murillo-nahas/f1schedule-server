@@ -1,16 +1,26 @@
-import Fastify from "fastify";
+import Fastify from 'fastify'
+import { GrandPrixController } from './core/controllers/grandPrixController'
+import { setupRoutes } from './routes'
+import { GrandPrixRepository } from './core/repositories/grandPrixRepository'
 
 const fastify = Fastify({
   logger: true,
-});
+})
 
-fastify.get("/", (request, reply) => {
-  return { hello: "world" };
-});
+const grandPrixRepository = new GrandPrixRepository()
 
-try {
-  fastify.listen({ port: 3000 });
-} catch (err) {
-  fastify.log.error(err);
-  process.exit(1);
+const grandPrixController = new GrandPrixController(grandPrixRepository)
+
+setupRoutes(fastify, grandPrixController)
+
+const start = async () => {
+  try {
+    await fastify.listen(3000)
+    console.log('Server running at http://localhost:3000/')
+  } catch (err) {
+    console.error(err)
+    process.exit(1)
+  }
 }
+
+start()
