@@ -1,17 +1,22 @@
 import Fastify from 'fastify'
 import { GrandPrixController } from './core/controllers/grandPrixController'
-import { setupRoutes } from './routes'
+import { setupGrandPrixRoutes, setupPracticeRoutes } from './routes'
 import { GrandPrixRepository } from './core/repositories/grandPrixRepository'
+import { PracticeController } from './core/controllers/practiceController'
+import { PracticeRepository } from './core/repositories/practiceRepository'
 
 const fastify = Fastify({
   logger: true,
 })
 
 const grandPrixRepository = new GrandPrixRepository()
+const practiceRepository = new PracticeRepository()
 
 const grandPrixController = new GrandPrixController(grandPrixRepository)
+const practiceController = new PracticeController(practiceRepository)
 
-setupRoutes(fastify, grandPrixController)
+setupGrandPrixRoutes(fastify, grandPrixController)
+setupPracticeRoutes(fastify, practiceController)
 
 const start = async () => {
   try {
