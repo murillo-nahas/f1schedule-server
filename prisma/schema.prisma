@@ -14,7 +14,8 @@ model GrandPrix {
   image       String
   start_date  DateTime
   end_date    DateTime
-  practices Practice[]
+  practices   Practice[]
+  sprintRaces SprintRace[]
 }
 
 model Practice {
@@ -30,4 +31,12 @@ enum PracticeType {
   FP2
   FP3
   Qualifying
+}
+
+model SprintRace {
+  id              Int          @id @default(autoincrement())
+  grand_prix_id   Int
+  date            DateTime
+  qualifying_date DateTime
+  grand_prix    GrandPrix    @relation(fields: [grand_prix_id], references: [id])
 }
