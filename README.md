@@ -2,7 +2,7 @@
 
 Get all the Formula 1 2024 schedule from here.
 
-## Getting started
+## How to run
 
 - Git clone on this repository (*HTTPS*): <br/>
 > git clone https://github.com/murillo-nahas/f1schedule-server.git
@@ -10,8 +10,22 @@ Get all the Formula 1 2024 schedule from here.
 - Install all the dependencies: <br/>
 > npm install or yarn add
 
-- Running: <br/>
-> npm run dev or npm start
+### Docker
+
+Make sure you have Docker installed on your machine. If so, run the following command in the CLI:
+
+> docker-compose up -d
+
+### Prisma
+
+Run Prisma migrations to create the tables:
+> npx prisma migrate dev
+
+### Running
+- To run the server:
+> npm start / npm run dev
+- Running Prisma Studio:
+> npm run studio
 
 ## Stack
 
