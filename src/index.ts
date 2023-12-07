@@ -1,3 +1,4 @@
+import cors from '@fastify/cors'
 import Fastify from 'fastify'
 import { GrandPrixController } from './core/controllers/grandPrixController'
 import {
@@ -13,6 +14,10 @@ import { SprintRaceController } from './core/controllers/sprintRaceController'
 
 const fastify = Fastify({
   logger: true,
+})
+
+fastify.register(cors, {
+  origin: '*',
 })
 
 const grandPrixRepository = new GrandPrixRepository()
